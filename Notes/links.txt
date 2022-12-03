@@ -1,0 +1,15 @@
+Seccion 01
+
+What is image recognition: https://medium.com/dataman-in-ai/module-6-image-recognition-for-insurance-claim-handling-part-i-a338d16c9de0
+
+An Easy Introduction to Machine Learning Recommender Systems: https://www.kdnuggets.com/2019/09/machine-learning-recommender-systems.html
+
+7 Innovative Uses of Clustering Algorithms in the Real World: https://datafloq.com/read/7-innovative-uses-of-clustering-algorithms/
+
+-------------------------------
+
+Seccion 02
+
+7 Regression Techniques you should know!: https://www.analyticsvidhya.com/blog/2015/08/comprehensive-guide-regression/
+
+Mínimos cuadrados: https://es.wikipedia.org/wiki/M%C3%ADnimos_cuadrados

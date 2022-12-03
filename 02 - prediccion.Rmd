@@ -1,0 +1,136 @@
+---
+title: "Modelos de predicción"
+output: html_notebook
+---
+
+## Regresión lineal simple
+
+
+```{r}
+library(tidyverse)
+
+data(cars)
+head(cars)
+```
+
+### Analisis exploratorio
+
+```{r}
+cars %>% ggplot(
+    aes(
+      x = speed,
+      y = dist
+    )
+  ) +
+  geom_point()
+
+```
+
+Tendencia al crecimeinto, un modelo lineal puede servir
+
+```{r}
+cars %>% ggplot(
+  aes(x = dist)
+  ) +
+  geom_boxplot() +
+  coord_flip()
+```
+
+Si hay muchos outliers regresion lineal no es muy confiable
+
+```{r}
+cor(cars$speed, cars$dist) # coeficiente de correlacion
+```
+
+### Creacion del modelo
+
+```{r}
+reg_lin <- lm(dist ~ speed, data = cars)
+summary(reg_lin)
+```
+
+Residuals : numeros resumen, min, max, q1, q2, q3
+Coefficients: valores de la ordenada y pendiente
+
+### Predicciones
+
+```{r}
+predict(reg_lin)
+```
+
+Predicciones para cada observacion
+Podemos crear un data frame con los datos observados y los predichos
+
+```{r}
+df_pred <- cbind(cars, fit = predict(reg_lin) )
+```
+
+```{r}
+df_pred %>% ggplot(
+  aes(
+    x = speed,
+    y = dist
+  )
+) +
+  geom_point() +
+  geom_line( aes( y = fit), color = "blue")
+```
+Se usa la columna de predichos para calcular la recta de prediccion.
+
+
+```{r}
+pred_int <- predict(
+  reg_lin,
+  interval = "predict",
+  level = 0.9
+)
+
+df_int <- cbind(cars, pred_int)
+```
+
+```{r}
+df_int %>% ggplot(
+  aes(
+    x = speed,
+    y = dist
+  )
+) +
+  geom_point() +
+  geom_line( aes( y = fit), color = "blue") +
+  geom_line( aes( y = lwr), color = "red" ) +
+  geom_line( aes( y = upr), color = "red" ) 
+```
+
+## Validando el modelo
+
+### Calculo de R cuadrado
+
+```{r}
+resumen <- summary(reg_lin)
+
+resumen$r.squared
+```
+R cuadrado > 0.75 es buen modelo, menores valores hay q revisar
+
+### Residuos
+
+```{r}
+hist(resumen$residuals)
+```
+
+Salvo valores más altos, es aproximadamente normal
+Los valores mayores a 40 son los que se ven por encima de la linea del intervalo. Puede indicar que el modelo lineal no es el mejor
+
+
+### P-valor de los coeficientes
+
+```{r}
+resumen$coefficients
+```
+
+El p-valor es diferente de cero, podemos confiar en los estimados
+
+Lo mismo puede verse en el summary de la regresion
+```{r}
+  summary(reg_lin)
+```
