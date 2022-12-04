@@ -13,3 +13,21 @@ Seccion 02
 7 Regression Techniques you should know!: https://www.analyticsvidhya.com/blog/2015/08/comprehensive-guide-regression/
 
 Mínimos cuadrados: https://es.wikipedia.org/wiki/M%C3%ADnimos_cuadrados
+
+
+-------------------------------
+
+Seccion 03
+
+Machine Learning: Classification Models: https://medium.com/fuzz/machine-learning-classification-models-3040f71e2529
+
+7 Types of Classification Algorithms: https://analyticsindiamag.com/7-types-classification-algorithms/
+
+
+-------------------------------
+
+Seccion 04
+
+Algoritmo esperanza-maximización: https://es.wikipedia.org/wiki/Algoritmo_esperanza-maximizaci%C3%B3n
+
+DBSCAN: https://es.wikipedia.org/wiki/DBSCAN
